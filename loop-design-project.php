@@ -8,5 +8,8 @@
 		</a>
 		<?php the_excerpt('<p class="left"></p>');?>
 	</div><!--.entry-content-->
+	<div class="entry-meta">
+	<?php the_terms( $post->ID, 'service', 'Services: ', ', ' ); ?>
+</div>
 
 </article>

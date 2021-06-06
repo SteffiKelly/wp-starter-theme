@@ -76,6 +76,19 @@ function wpmu_widgets_init() {
 add_action('init', 'wpmu_widgets_init');
 
 /**********************************************************************************
+Include pages in query
+**********************************************************************************/
+
+function wpmu_add_pages_to_category_archives( $query ) {
+
+	if ( is_category() && $query->is_main_query() ) {
+		$query->set('post_type', array( 'post', 'page' ) );
+	}
+
+}
+add_action( 'pre_get_posts', 'wpmu_add_pages_to_category_archives' );
+
+/**********************************************************************************
 wpmu_theme_support - adds theme support for post formats, post thumbnails, HTML5 and automatic feed links
 **********************************************************************************/
 function wpmu_theme_support() {
